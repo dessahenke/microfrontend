@@ -1,3 +1,9 @@
 {
-  "conventionalCommits.scopes": ["container", "auth", "marketing", "dashboard"]
+  "conventionalCommits.scopes": [
+    "container",
+    "auth",
+    "marketing",
+    "dashboard",
+    "common"
+  ]
 }
