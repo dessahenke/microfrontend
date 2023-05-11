@@ -3,8 +3,12 @@ import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
-export const mountMarketing = (el, { onNavigate, defaultHistory }) => {
-  const history = defaultHistory || createMemoryHistory();
+export const mountAuth = (el, { onNavigate, defaultHistory, initialPath }) => {
+  const history =
+    defaultHistory ||
+    createMemoryHistory({
+      initialEntries: [initialPath],
+    });
 
   if (onNavigate) history.listen(onNavigate);
 
@@ -21,6 +25,5 @@ export const mountMarketing = (el, { onNavigate, defaultHistory }) => {
 if (process.env.NODE_ENV === "development") {
   const devRoot = document.querySelector("#_auth-dev-root");
 
-  if (devRoot)
-    mountMarketing(devRoot, { defaultHistory: createBrowserHistory() });
+  if (devRoot) mountAuth(devRoot, { defaultHistory: createBrowserHistory() });
 }
